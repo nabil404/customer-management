@@ -23,11 +23,11 @@ const users = JSON.parse(
 const seedData = async () => {
   try {
     await User.create(users);
-    console.log("Data seed completed");
+    console.log("Users added");
+    process.exit();
   } catch (error) {
     console.log(error);
   }
 };
 
 seedData();
-process.exit();
