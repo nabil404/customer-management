@@ -12,7 +12,7 @@ exports.login = async (req, res, next) => {
     //Check for empty username or password field
     if (!username || !password) {
       return next(
-        errorHandler.sendError("Provide email and password", "failed", 400)
+        errorHandler.sendError("Provide username or password", "failed", 400)
       );
     }
 
@@ -31,6 +31,7 @@ exports.login = async (req, res, next) => {
       expiresIn: process.env.JWT_EXPIRES,
     });
 
+    //Send token in response
     res.status(200).json({
       status: "success",
       token,

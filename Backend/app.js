@@ -5,6 +5,7 @@ const errorHandler = require("./utils/errorHandler");
 
 //Import Routes
 const usersRoutes = require("./routes/usersRoute");
+const customersRoutes = require("./routes/customersRoute");
 
 const app = express();
 
@@ -16,8 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routes
 app.use("/api/v1/users", usersRoutes);
-// app.use("/api/v1/customers", customersRoutes);
+app.use("/api/v1/customers", customersRoutes);
 
+//Handling urls not defined
 app.all("*", (req, res, next) => {
   next(
     errorHandler.sendError(
@@ -28,6 +30,7 @@ app.all("*", (req, res, next) => {
   );
 });
 
+//Error handling
 app.use((error, req, res, next) => {
   error.statusCode = error.statusCode || 500;
   error.status = error.status || "error";

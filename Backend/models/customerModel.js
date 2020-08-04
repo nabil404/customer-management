@@ -6,9 +6,7 @@ const CustomerSchema = new mongoose.Schema({
     type: String,
     required: [true, "User must have a name"],
   },
-  phone: {
-    type: Number,
-  },
+  phone: String,
   email: {
     type: String,
     required: [true, "Email must be provided"],
