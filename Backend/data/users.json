@@ -1,0 +1,27 @@
+[
+  {
+    "username": "nabil",
+    "role": "admin",
+    "password": 12345678
+  },
+  {
+    "username": "advisor1",
+    "role": "advisor",
+    "password": 12345678
+  },
+  {
+    "username": "advisor2",
+    "role": "advisor",
+    "password": 12345678
+  },
+  {
+    "username": "advisor3",
+    "role": "advisor",
+    "password": 12345678
+  },
+  {
+    "username": "advisor4",
+    "role": "advisor",
+    "password": 12345678
+  }
+]
