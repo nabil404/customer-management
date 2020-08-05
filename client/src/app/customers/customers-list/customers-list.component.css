@@ -1,0 +1,11 @@
+.cell {
+  cursor: pointer;
+}
+
+.cell:focus {
+  outline: none;
+}
+
+.cell:hover {
+  background: rgb(233, 233, 233);
+}

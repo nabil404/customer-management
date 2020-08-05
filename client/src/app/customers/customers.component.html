@@ -1,0 +1,19 @@
+<div class="customers-container">
+  <div class="button-container">
+    <button class="customer-add-btn" mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="breadcrumb-container">
+    <span *ngFor="let item of breadcrumb; let i = index"
+      ><a
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="item === breadcrumb[0] ? '/customers' : item"
+        class="breadcrumb"
+        >{{ item }}</a
+      >/</span
+    >
+  </div>
+  <router-outlet></router-outlet>
+</div>

@@ -1,4 +1,5 @@
 const express = require("express");
+var cors = require("cors");
 const morgan = require("morgan");
 
 const errorHandler = require("./utils/errorHandler");
@@ -8,6 +9,7 @@ const usersRoutes = require("./routes/usersRoute");
 const customersRoutes = require("./routes/customersRoute");
 
 const app = express();
+app.use(cors());
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
