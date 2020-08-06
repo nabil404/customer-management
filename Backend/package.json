@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start:dev": "cross-env nodemon server.js",
+    "start": "cross-env nodemon server.js",
     "start:prod": "cross-env NODE_ENV='production' nodemon server.js",
     "seedUsers": "node seedData.js"
   },

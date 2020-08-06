@@ -1,6 +1,11 @@
 <mat-grid-list cols="1" rowHeight="90vh">
   <mat-grid-tile>
+    <mat-spinner *ngIf="isSubmitting"></mat-spinner>
+    <div class="error-container login-form mat-elevation-z8" *ngIf="error">
+      {{ error }}
+    </div>
     <form
+      *ngIf="!isSubmitting"
       class="login-form mat-elevation-z8"
       [formGroup]="loginForm"
       (ngSubmit)="onSubmit()"
@@ -12,8 +17,9 @@
             type="text"
             matInput
             formControlName="username"
-            placeholder="Ex. pat@example.com"
+            placeholder="Username"
           />
+          <mat-error> Username is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
       <div>
@@ -25,6 +31,7 @@
             formControlName="password"
             placeholder="Password"
           />
+          <mat-error> Password is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
       <button mat-raised-button color="primary" type="submit">

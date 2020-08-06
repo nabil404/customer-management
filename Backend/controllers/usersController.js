@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 const errorHandler = require("../utils/errorHandler");
 
 //Import User Model
@@ -22,7 +23,7 @@ exports.login = async (req, res, next) => {
     //Verify user password
     if (!user || !(await user.verifyPassword(password, user.password))) {
       return next(
-        errorHandler.sendError("Incorrect email or password", "failed", 400)
+        errorHandler.sendError("Incorrect username or password", "failed", 400)
       );
     }
 

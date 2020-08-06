@@ -8,25 +8,25 @@ const User = require("../models/userModel");
 const isLoggedIn = async (req, res, next) => {
   try {
     let token;
-    //Check for token in the request header
-    // if (
-    //   req.headers.authorization &&
-    //   req.headers.authorization.startsWith("Bearer")
-    // ) {
-    //   token = req.headers.authorization.split(" ")[1];
-    // }
+    // Check for token in the request header
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
+    }
 
-    //If no token send error
-    // if (!token) {
-    //   return next(
-    //     errorHandler.sendError("Please login to continue", "failed", 400)
-    //   );
-    // }
+    // If no token send error
+    if (!token) {
+      return next(
+        errorHandler.sendError("Please login to continue", "failed", 400)
+      );
+    }
 
     //Verify Token and get id from decoded value
-    // const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-    // const { id } = decoded;
-    const id = "5f28f53c429aef34bc3c8150";
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    const { id } = decoded;
+
     //Find user by id
     const user = await User.findById(id);
 

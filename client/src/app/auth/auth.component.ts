@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -8,17 +10,43 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AuthComponent implements OnInit {
   loginForm: FormGroup;
+  isSubmitting: Boolean = false;
+  error: string = null;
 
-  constructor() {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl(null),
-      password: new FormControl(null),
+      username: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.required),
     });
   }
 
   onSubmit() {
-    console.log(this.loginForm);
+    this.isSubmitting = true;
+    const form = this.loginForm;
+
+    if (!form.valid) {
+      return;
+    }
+
+    const email = form.value.username;
+    const password = form.value.password;
+
+    this.apiService.login(email, password).subscribe(
+      (res) => {
+        this.isSubmitting = false;
+        this.router.navigate(['/customers']);
+      },
+      (err) => {
+        this.isSubmitting = false;
+        if (err.error instanceof ProgressEvent && err.error.type === 'error') {
+          return (this.error = 'Failed to connect to the server');
+        }
+        this.error = err.error.message;
+      }
+    );
+
+    form.reset();
   }
 }

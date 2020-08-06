@@ -5,6 +5,8 @@ import { CustomersComponent } from './customers/customers.component';
 import { CustomersListComponent } from './customers/customers-list/customers-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -15,6 +17,7 @@ const appRoutes: Routes = [
   {
     path: 'customers',
     component: CustomersComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: CustomersListComponent },
       { path: ':id', component: CustomerDetailComponent },

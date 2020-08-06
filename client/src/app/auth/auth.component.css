@@ -1,9 +1,16 @@
 .login-form {
-  width: 50%;
+  width: 45%;
   padding: 20px;
   border-radius: 5px;
 }
 
 .input-width {
   width: 100%;
+}
+
+.error-container {
+  position: absolute;
+  top: 20vh;
+  background: #f8d7da;
+  color: #ff2010;
 }
