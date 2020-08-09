@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
 
 @Component({
   selector: 'app-customers',
@@ -9,7 +11,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class CustomersComponent implements OnInit {
   breadcrumb: string[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     let url = this.router.url.substring(1).split('/');
@@ -20,5 +22,9 @@ export class CustomersComponent implements OnInit {
       }
       this.breadcrumb = url;
     });
+  }
+
+  onCustomerAddButtonClick() {
+    this.dialog.open(CustomerFormComponent);
   }
 }

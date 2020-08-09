@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { ApiService } from '../api.service';
+import { take, exhaustMap } from 'rxjs/operators';
 
 export interface Customer {
-  id: string;
+  id?: string;
   name: string;
   phone: string;
   email: string;
@@ -16,16 +18,39 @@ export interface Customer {
 export class CustomersService {
   customersUpdated = new Subject<Customer[]>();
 
-  private customers: Customer[] = [];
+  public customers: Customer[] = [];
 
-  constructor() {}
-
-  getCustomers() {
-    return [...this.customers];
+  constructor(private apiService: ApiService) {
+    this.apiService.fetchCustomers().subscribe((customers) => {
+      this.customers = customers;
+      this.customersUpdated.next([...this.customers]);
+    });
   }
 
-  setCustomers(customers: Customer[]) {
-    this.customers = customers;
-    this.customersUpdated.next([...this.customers]);
+  addCustomer(customer: Customer) {
+    this.apiService.createCustomer(customer).subscribe((customer) => {
+      this.customers.push(customer);
+      this.customersUpdated.next([...this.customers]);
+    });
+  }
+
+  editCustomer(customer: Customer, id: string) {
+    this.apiService
+      .updateCustomer(customer, id)
+      .pipe(exhaustMap(() => this.apiService.fetchCustomers()))
+      .subscribe((customers) => {
+        this.customers = customers;
+        this.customersUpdated.next([...this.customers]);
+      });
+  }
+
+  deleteCustomer(id: string) {
+    this.apiService
+      .deleteCustomer(id)
+      .pipe(exhaustMap(() => this.apiService.fetchCustomers()))
+      .subscribe((customers) => {
+        this.customers = customers;
+        this.customersUpdated.next([...this.customers]);
+      });
   }
 }

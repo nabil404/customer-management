@@ -15,6 +15,8 @@ import { CustomerDetailComponent } from './customers/customer-detail/customer-de
 import { CustomersListComponent } from './customers/customers-list/customers-list.component';
 
 import { ApiInterceptorService } from './api-interceptor.service';
+import { CustomerFormComponent } from './customers/customer-form/customer-form.component';
+import { CustomerDeleteComponent } from './customers/customers-list/customer-delete/customer-delete.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ApiInterceptorService } from './api-interceptor.service';
     CustomersComponent,
     CustomerDetailComponent,
     CustomersListComponent,
+    CustomerFormComponent,
+    CustomerDeleteComponent,
   ],
   imports: [
     BrowserModule,

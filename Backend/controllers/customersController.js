@@ -37,10 +37,6 @@ exports.getCustomers = async (req, res, next) => {
       customers = await Customer.find({ createdBy: req.user._id });
     }
 
-    if (!customers.length) {
-      return next(errorHandler.sendError("No customers found", "failed", 404));
-    }
-
     res.status(200).json({
       status: "success",
       data: {

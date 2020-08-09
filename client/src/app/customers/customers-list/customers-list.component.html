@@ -9,6 +9,22 @@
     </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>
+      <h2>Actions</h2>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let element">
+      <button mat-flat-button color="primary" (click)="onCustomerEdit(element)">
+        <mat-icon>create</mat-icon>
+      </button>
+      &nbsp;
+      <button mat-flat-button color="warn" (click)="onCustomerDelete(element)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
