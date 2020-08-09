@@ -8,9 +8,10 @@ import { ApiService } from './api.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  menuOpened = false;
+  menuOpened = false; //Sidebar menu opened(true) or closed(false)
 
   constructor(private router: Router, private apiService: ApiService) {
+    //Close side menu if opened while navigation
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationStart) {
         this.menuOpened = false;
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //Check jwt in local storage
     this.apiService.checkAuth();
   }
 

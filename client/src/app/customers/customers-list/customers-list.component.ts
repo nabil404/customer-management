@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
 import { CustomerDeleteComponent } from '../customers-list/customer-delete/customer-delete.component';
 import { Customer, CustomersService } from '../customers.service';
@@ -11,9 +12,10 @@ import { Customer, CustomersService } from '../customers.service';
   styleUrls: ['./customers-list.component.css'],
 })
 export class CustomersListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'actions'];
+  private customersSub: Subscription;
+  isLoading = false;
   dataSource: Customer[];
-  customersSub: Subscription;
+  displayedColumns: string[] = ['name', 'actions'];
 
   constructor(
     private customerService: CustomersService,
@@ -21,10 +23,12 @@ export class CustomersListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dataSource = this.customerService.customers;
+    this.isLoading = true;
+    this.customerService.getCustomers();
     this.customersSub = this.customerService.customersUpdated.subscribe(
       (customers: Customer[]) => {
         this.dataSource = customers;
+        this.isLoading = false;
       }
     );
   }

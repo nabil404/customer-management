@@ -15,9 +15,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  @Output() menuButtonClicked = new EventEmitter<void>();
+  @Output() menuButtonClicked = new EventEmitter<void>(); //Event emitter for menu button
+  loggedIn: Boolean = false; //For conditional rendering
+
   private tokenSub: Subscription;
-  loggedIn: Boolean = false;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -25,10 +26,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.tokenSub = this.apiService.userToken.subscribe((res) => {
       this.loggedIn = !!res;
     });
-
-    if (this.loggedIn) {
-      this.router.navigate(['/customers']);
-    }
   }
 
   onMenuButtonClicked() {

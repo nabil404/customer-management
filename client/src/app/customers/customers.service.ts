@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ApiService } from '../api.service';
-import { take, exhaustMap } from 'rxjs/operators';
+import { exhaustMap } from 'rxjs/operators';
 
 export interface Customer {
   id?: string;
@@ -18,9 +18,15 @@ export interface Customer {
 export class CustomersService {
   customersUpdated = new Subject<Customer[]>();
 
-  public customers: Customer[] = [];
+  public customers: Customer[];
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService) {}
+
+  getCustomer(id: string) {
+    return this.apiService.fetchCustomer(id);
+  }
+
+  getCustomers() {
     this.apiService.fetchCustomers().subscribe((customers) => {
       this.customers = customers;
       this.customersUpdated.next([...this.customers]);

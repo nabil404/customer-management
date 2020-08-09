@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
+  tokenSub: Subscription;
   loginForm: FormGroup;
   isSubmitting: Boolean = false;
   error: string = null;
@@ -16,6 +18,12 @@ export class AuthComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
+    this.tokenSub = this.apiService.userToken.subscribe((res) => {
+      if (res) {
+        this.router.navigate(['/customers']);
+      }
+    });
+
     this.loginForm = new FormGroup({
       username: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),

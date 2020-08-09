@@ -1,29 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Customer } from '../customers.service';
-import { ApiService } from 'src/app/api.service';
-import { Params, Router, ActivatedRoute } from '@angular/router';
+import { CustomersService } from '../customers.service';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-customer-detail',
   templateUrl: './customer-detail.component.html',
   styleUrls: ['./customer-detail.component.css'],
 })
-export class CustomerDetailComponent implements OnInit {
+export class CustomerDetailComponent implements OnInit, OnDestroy {
   customer: Customer;
   id: string;
-
+  customerSub: Subscription;
   constructor(
-    private apiService: ApiService,
-    private router: Router,
+    private customersService: CustomersService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
-      this.apiService
-        .fetchCustomer(this.id)
-        .subscribe((customer) => (this.customer = customer));
-    });
+    this.id = this.route.snapshot.params['id'];
+    this.customerSub = this.customersService
+      .getCustomer(this.id)
+      .subscribe((customer) => (this.customer = customer));
+  }
+
+  ngOnDestroy() {
+    this.customerSub.unsubscribe();
   }
 }

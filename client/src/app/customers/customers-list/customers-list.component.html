@@ -2,6 +2,8 @@
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>
       <h2>Customers</h2>
+      &nbsp;
+      <mat-spinner [diameter]="20" *ngIf="isLoading"></mat-spinner>
     </mat-header-cell>
 
     <mat-cell class="cell" *matCellDef="let element" [routerLink]="element.id">

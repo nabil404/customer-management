@@ -4,15 +4,10 @@ import { AuthComponent } from './auth/auth.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersListComponent } from './customers/customers-list/customers-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
-
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full',
-  },
   { path: 'login', component: AuthComponent },
   {
     path: 'customers',
@@ -22,6 +17,15 @@ const appRoutes: Routes = [
       { path: '', component: CustomersListComponent },
       { path: ':id', component: CustomerDetailComponent },
     ],
+  },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: ErrorPageComponent,
   },
 ];
 

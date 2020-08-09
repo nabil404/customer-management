@@ -4,19 +4,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+//Import App routing Module
 import { AppRoutingModule } from './app-routing.module';
 
-import { MaterialModule } from './material/material.module';
+//Import Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthComponent } from './auth/auth.component';
 import { CustomersComponent } from './customers/customers.component';
-import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
-import { CustomersListComponent } from './customers/customers-list/customers-list.component';
-
-import { ApiInterceptorService } from './api-interceptor.service';
 import { CustomerFormComponent } from './customers/customer-form/customer-form.component';
+import { CustomersListComponent } from './customers/customers-list/customers-list.component';
+import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 import { CustomerDeleteComponent } from './customers/customers-list/customer-delete/customer-delete.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+
+//Import Angular Material Module
+import { MaterialModule } from './material/material.module';
+
+//Import Interceptor for adding authorization header with every url
+import { ApiInterceptorService } from './api-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -24,10 +30,11 @@ import { CustomerDeleteComponent } from './customers/customers-list/customer-del
     HeaderComponent,
     AuthComponent,
     CustomersComponent,
-    CustomerDetailComponent,
-    CustomersListComponent,
     CustomerFormComponent,
+    CustomersListComponent,
+    CustomerDetailComponent,
     CustomerDeleteComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
