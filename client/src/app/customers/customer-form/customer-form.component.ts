@@ -48,6 +48,7 @@ export class CustomerFormComponent implements OnInit {
 
   onSubmit() {
     const form = this.customerForm;
+
     if (!form.valid) {
       return;
     }

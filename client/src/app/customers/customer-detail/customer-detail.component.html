@@ -1,8 +1,16 @@
 <mat-spinner *ngIf="!customer"></mat-spinner>
 <div class="container mat-elevation-z8" *ngIf="customer">
   <h1 class="mat-display-1">{{ customer.name }}</h1>
-  <h2 class="mat-h2">Phone: {{ customer.phone }}</h2>
-  <h2 class="mat-h2">Email: {{ customer.email }}</h2>
-  <h2 class="mat-h2">Address: {{ customer.address }}</h2>
-  <h2 class="mat-h2">Citizenship: {{ customer.citizenship }}</h2>
+  <h2 class="mat-h2">
+    {{ "CUSTOMER_FORM.PHONE" | translate }}: {{ customer.phone }}
+  </h2>
+  <h2 class="mat-h2">
+    {{ "CUSTOMER_FORM.EMAIL" | translate }}: {{ customer.email }}
+  </h2>
+  <h2 class="mat-h2">
+    {{ "CUSTOMER_FORM.ADDRESS" | translate }}: {{ customer.address }}
+  </h2>
+  <h2 class="mat-h2">
+    {{ "CUSTOMER_FORM.CITIZENSHIP" | translate }}: {{ customer.citizenship }}
+  </h2>
 </div>

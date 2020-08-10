@@ -24,6 +24,9 @@ import { MaterialModule } from './material/material.module';
 //Import Interceptor for adding authorization header with every url
 import { ApiInterceptorService } from './api-interceptor.service';
 
+//Import Translate Module
+import { AppTranslateModule } from './app-translate.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +46,7 @@ import { ApiInterceptorService } from './api-interceptor.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    AppTranslateModule,
   ],
   providers: [
     {

@@ -9,6 +9,16 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
+
+  <mat-form-field appearance="fill" color="primary">
+    <mat-label>{{ "CHANGE_LANG.CHANGE_LANGUAGE" | translate }}</mat-label>
+    <mat-select (selectionChange)="onLanguageSelect($event)">
+      <mat-option *ngFor="let lang of languages" [value]="lang.code">{{
+        lang.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <div class="breadcrumb-container">
     <span *ngFor="let item of breadcrumb; let i = index"
       ><a

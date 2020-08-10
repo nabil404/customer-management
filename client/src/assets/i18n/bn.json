@@ -1,0 +1,26 @@
+{
+  "HEADER": {
+    "LOGOUT": "লগআউট"
+  },
+  "CHANGE_LANG": {
+    "CHANGE_LANGUAGE": "ভাষা পরিবর্তন"
+  },
+  "CUSTOMER_FORM": {
+    "TITLE_ADD": "গ্রাহকের তথ্য যুক্ত করুন",
+    "TITLE_UPDATE": "গ্রাহকের তথ্য আপডেট করুন",
+    "NAME": "নাম",
+    "PHONE": "ফোন",
+    "EMAIL": "ইমেল",
+    "ADDRESS": "ঠিকানা",
+    "CITIZENSHIP": "নাগরিকত্ব",
+    "UPDATE": "আপডেট করুন",
+    "ADD": "যুক্ত করুন",
+    "CANCEL": "বাতিল করুন",
+    "REQUIRED_ERROR": "ঘরটি অবশ্যই পূরণ করতে হবে",
+    "EMAIL_ERROR": "অকার্যকর ইমেল"
+  },
+  "CUSTOMERS_LIST": {
+    "CUSTOMERS": "গ্রাহকসমূহ",
+    "ACTIONS": "ক্রিয়াকলাপ"
+  }
+}

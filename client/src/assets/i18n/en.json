@@ -1,0 +1,26 @@
+{
+  "HEADER": {
+    "LOGOUT": "Logout"
+  },
+  "CUSTOMER_FORM": {
+    "TITLE_ADD": "Add Customer Information",
+    "TITLE_UPDATE": "Update Customer Information",
+    "NAME": "Name",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
+    "ADDRESS": "Address",
+    "CITIZENSHIP": "Citizenship",
+    "UPDATE": "Update",
+    "ADD": "Add",
+    "CANCEL": "Cancel",
+    "REQUIRED_ERROR": "This field is required",
+    "EMAIL_ERROR": "Invalid email"
+  },
+  "CUSTOMERS_LIST": {
+    "CUSTOMERS": "Customers",
+    "ACTIONS": "Actions"
+  },
+  "CHANGE_LANG": {
+    "CHANGE_LANGUAGE": "Change Language"
+  }
+}

@@ -5,6 +5,6 @@
   <span>Customer Management</span>
   <span class="spacer"></span>
   <button mat-raised-button color="accent" *ngIf="loggedIn" (click)="logout()">
-    Logout
+    {{ "HEADER.LOGOUT" | translate }}
   </button>
 </mat-toolbar>

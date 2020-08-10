@@ -1,7 +1,7 @@
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>
-      <h2>Customers</h2>
+      <h2>{{ "CUSTOMERS_LIST.CUSTOMERS" | translate }}</h2>
       &nbsp;
       <mat-spinner [diameter]="20" *ngIf="isLoading"></mat-spinner>
     </mat-header-cell>
@@ -13,7 +13,7 @@
 
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef>
-      <h2>Actions</h2>
+      <h2>{{ "CUSTOMERS_LIST.ACTIONS" | translate }}</h2>
     </mat-header-cell>
 
     <mat-cell *matCellDef="let element">
