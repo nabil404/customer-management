@@ -22,5 +22,11 @@
   },
   "CHANGE_LANG": {
     "CHANGE_LANGUAGE": "Change Language"
+  },
+  "CUSTOMER_DELETE": {
+    "ALERT_P1": "Are you sure?",
+    "ALERT_P2": "will be deleted",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete"
   }
 }

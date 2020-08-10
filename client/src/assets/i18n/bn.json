@@ -22,5 +22,11 @@
   "CUSTOMERS_LIST": {
     "CUSTOMERS": "গ্রাহকসমূহ",
     "ACTIONS": "ক্রিয়াকলাপ"
+  },
+  "CUSTOMER_DELETE": {
+    "ALERT_P1": "আপনি কি নিশ্চিত?",
+    "ALERT_P2": "মুছে ফেলা হবে",
+    "CANCEL": "বাতিল করুন",
+    "DELETE": "মুছে ফেলুন"
   }
 }
