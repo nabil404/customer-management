@@ -40,7 +40,6 @@ export class CustomersComponent implements OnInit {
 
     //Get selected language from local storage
     if (localStorage.getItem('language')) {
-      console.log(localStorage.getItem('language'));
       this.translate.use(localStorage.getItem('language'));
     }
   }

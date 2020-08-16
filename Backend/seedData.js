@@ -5,7 +5,7 @@ dotEnv.config({ path: "./config.env" });
 
 const User = require("./models/userModel");
 
-const DB = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.av7uw.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
+const DB = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster-1-selise.5vr3u.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
 
 mongoose
   .connect(DB, {
