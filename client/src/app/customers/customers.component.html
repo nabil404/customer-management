@@ -26,9 +26,10 @@
         [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="item === breadcrumb[0] ? '/customers' : item"
         class="breadcrumb"
-        >{{ item }}</a
+      >
+        {{ item === breadcrumb[1] ? customerName : item }} </a
       >/</span
     >
   </div>
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
 </div>

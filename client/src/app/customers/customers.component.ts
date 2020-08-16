@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.css'],
 })
-export class CustomersComponent implements OnInit {
+export class CustomersComponent implements OnInit, OnDestroy {
   breadcrumb: string[] = [];
   languages: { code: string; name: string }[];
+  customerNameSub: Subscription;
+  customerName: string;
 
   constructor(
     private router: Router,
@@ -53,5 +57,17 @@ export class CustomersComponent implements OnInit {
 
   onCustomerAddButtonClick() {
     this.dialog.open(CustomerFormComponent);
+  }
+
+  onRouterOutletActivate(event: any) {
+    if (event instanceof CustomerDetailComponent) {
+      this.customerNameSub = event.customerName.subscribe(
+        (res: { name: string }) => (this.customerName = res.name)
+      );
+    }
+  }
+
+  ngOnDestroy() {
+    this.customerNameSub.unsubscribe();
   }
 }
